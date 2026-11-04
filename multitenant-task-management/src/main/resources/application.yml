@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: multi-tenant-task-management
+  datasource:
+    url: jdbc:h2:mem:taskdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+server:
+  port: ${PORT:8081}
+app:
+  jwt:
+    # Replace this development key with a secret from environment variables in deployment.
+    secret: ${JWT_SECRET:change-this-development-secret-key-to-at-least-32-characters}
+    expiration-ms: 86400000
